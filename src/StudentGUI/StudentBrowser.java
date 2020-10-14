@@ -33,7 +33,7 @@ public class StudentBrowser extends javax.swing.JFrame {
        txt_test3.setText("" + s[currentstudent].getMark(3));
        lbl_averagebox.setText("" + s[currentstudent].getAverage());
        lbl_countbox.setText("" + size);
-       lbl_indexbox.setText("" + currentstudent);
+       lbl_indexbox.setText("" + (currentstudent+1));
    }
   
     
@@ -101,6 +101,11 @@ public class StudentBrowser extends javax.swing.JFrame {
         });
 
         btn_first.setText("<<");
+        btn_first.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_firstActionPerformed(evt);
+            }
+        });
 
         lbl_name.setText("Name:");
 
@@ -197,8 +202,8 @@ public class StudentBrowser extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(38, 38, 38)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl_name)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbl_name, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(txt_name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -266,7 +271,7 @@ public class StudentBrowser extends javax.swing.JFrame {
                 showStudent();
             }
             else
-                JOptionPane.showMessageDialog(this,em);
+                JOptionPane.showMessageDialog(this, em, "Error", 2);
         
     }//GEN-LAST:event_btn_addActionPerformed
 
@@ -285,11 +290,12 @@ public class StudentBrowser extends javax.swing.JFrame {
                 showStudent();
             }
             else
-                JOptionPane.showMessageDialog(this,em);
+                JOptionPane.showMessageDialog(this,em, "Error", 2);
     }//GEN-LAST:event_btn_modifyActionPerformed
 
     private void btn_lastActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_lastActionPerformed
-        // TODO add your handling code here:
+        currentstudent = size-1;
+        showStudent();
     }//GEN-LAST:event_btn_lastActionPerformed
 
     private void btn_nextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_nextActionPerformed
@@ -298,6 +304,11 @@ public class StudentBrowser extends javax.swing.JFrame {
             showStudent();
         }
     }//GEN-LAST:event_btn_nextActionPerformed
+
+    private void btn_firstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_firstActionPerformed
+        currentstudent = 0;
+        showStudent();
+    }//GEN-LAST:event_btn_firstActionPerformed
 
     /**
      * @param args the command line arguments

@@ -68,11 +68,14 @@ public class Student {
         String message = null;
         //check if name is entered
         if (name.equals("")) {
-            message += "\nName is required\nPlease re-enter all data";
+            message = "\nName is required\nPlease re-enter all data";
         }
 
         if (marks[0] < 0 || marks[0] > 100 || marks[1] < 0 || marks[1] > 100 || marks[2] < 0 || marks[2] > 100) {
-            message += "\nAt least one mark is out of range, please re-enter all data";
+            if(message==null)
+            message = "\nAt least one mark is out of range, please re-enter all data";
+            else
+                message += "\nAt least one mark is out of range, please re-enter all data";
         }
 
         return message;
